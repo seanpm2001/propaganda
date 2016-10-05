@@ -1,0 +1,32 @@
+#!/bin/bash
+
+gnuplot << END
+
+set terminal eps enhanced color size 6.5, 0.1
+set output "line.eps"
+
+set border 0
+set ticslevel 0
+
+set lmargin screen 0
+set rmargin screen 1
+set bmargin screen 0
+set tmargin screen 1
+
+unset xtics
+set format x ''
+set xrange[0:1.0]
+
+unset ytics
+set format y ''
+set yrange[-1e-5:1e-5]
+
+unset colorbox
+set palette rgbformulae 8, 9, 9 negative
+
+set samples 50
+set isosamples 50
+
+plot '++' u 1:(0):1 w l lt 1 lw 6 palette notitle
+
+END
